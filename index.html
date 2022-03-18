@@ -210,7 +210,55 @@
       "FONASA"
     );
 
-    console.log(traumatologia);
+    // parte 2 del desafio
+    radiologia.shift();
+    radiologia.pop();
+
+    //parte 3 del desafio
+
+    document.write("<h2>Listado de horas dentales</h2>");
+    dental.forEach(function (horaMedica) {
+      document.write(`
+        <p>${horaMedica.hora}-${horaMedica.especialista}-${horaMedica.paciente}-${horaMedica.rut}-${horaMedica.prevision}</p>
+        <br>
+        `);
+    });
+
+    //parte 4 del desafio
+
+    const listadoDeConsultas = [...radiologia, ...traumatologia, ...dental];
+    document.write("<h2>Listado de todos los pacientes</h2>");
+    listadoDeConsultas.map(function (horaMedica) {
+      document.write(`
+        <p>${horaMedica.paciente}</p>
+        `);
+    });
+
+    // parte 5 del desafio
+
+    document.write(
+      "<h2>Listado de todos los pacientes con ISAPRE en consultas dental</h2>"
+    );
+    dental
+      .filter(function (consulta) {
+        return consulta.prevision === "ISAPRE";
+      })
+      .map(function (consulta) {
+        document.write(`${consulta.paciente} - ${consulta.prevision} <br/>`);
+      });
+
+    // parte 6 del desafio
+
+    document.write(
+      "<h2>Listado de todos los pacientes con FONASA en consultas Traumatologia</h2>"
+    );
+    traumatologia
+      .filter(function (consulta) {
+        return consulta.prevision === "FONASA";
+      })
+      .map(function (consulta) {
+        document.write(`${consulta.paciente} - ${consulta.prevision} <br/>`);
+      });
 
     //Agregar código para el desafio 2 aquí
 
